@@ -12,7 +12,7 @@ on:
 jobs:
 
   windows-latest-terraform:
-    name: "windows-latest Microsoft Windows Server 2019 Datacenter terraform"  
+    name: "Microsoft Windows Server 2019 Datacenter terraform"  
     runs-on: windows-latest
     steps:
     - name: Checkout
