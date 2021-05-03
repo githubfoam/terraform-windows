@@ -28,7 +28,7 @@ jobs:
       run: |
         choco install terraform
         terraform -help
-        terraform -install-autocomplete                     
+        # terraform -install-autocomplete                     
     # - name: "Teardown pyhton 3.8.1 virtualenv"
     #   run: deactivate
 
