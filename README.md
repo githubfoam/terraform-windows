@@ -1,2 +1,0 @@
-# terraform-windows
-terraform windows
