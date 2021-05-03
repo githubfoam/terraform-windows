@@ -3,31 +3,29 @@ name: "terraform chocolatey CI workflow"
 
 on:
   push:
-    branches: [ dev ]
+    branches: [ test ]
 
 
 jobs:
 
-  windows-latest-pwsh-terraform:
-    name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
+  windows-latest-terraform:
+    name: "windows-latest Microsoft Windows Server 2019 Datacenter terraform"  
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    # https://github.com/chocolatey/ChocolateyGUI
-    # - name: "Deploy pyhton 3.8.1 virtualenv" 
-    #   run: |
-    #     python --version 
-    #     choco install python --version 3.8.1
-    #     pip install virtualenv
-    #     virtualenv $HOME/venv
-    #     source $HOME/venv/Scripts/activate
-    #     python --version
-    #     pip install -r requirements.txt 
     - name: "Deploy terraform " 
       run: |
         choco install terraform
         terraform -help
-        # terraform -install-autocomplete                     
-    # - name: "Teardown pyhton 3.8.1 virtualenv"
-    #   run: deactivate
+
+  windows-2016-terraform:
+    name: "Microsoft Windows Server 2016 Datacenter terraform"
+    runs-on: windows-2016
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "Deploy terraform " 
+      run: |
+        choco install terraform
+        terraform -help         
