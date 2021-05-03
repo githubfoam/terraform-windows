@@ -45,7 +45,7 @@ jobs:
         choco install python --version 3.8.1
         pip install virtualenv
         virtualenv venv
-        source venv/Scripts/activate
+        source venv\Scripts\activate
         # virtualenv $HOME/venv
         # source $HOME/venv/Scripts/activate
         python --version
