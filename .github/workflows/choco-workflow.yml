@@ -45,7 +45,8 @@ jobs:
         choco install python --version 3.8.1
         pip install virtualenv
         virtualenv $HOME/venv
-        source $HOME/venv/Scripts/activate
+        # source $HOME/venv/Scripts/activate
+        activate
         python --version
         pip install -r requirements.txt 
     # - name: "Deploy terraform " 
