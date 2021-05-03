@@ -15,22 +15,22 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
     # https://github.com/chocolatey/ChocolateyGUI
-    - name: "Deploy pyhton 3.8.1 virtualenv" 
-      run: |
-        python --version 
-        choco install python --version 3.8.1
-        pip install virtualenv
-        virtualenv $HOME/venv
-        source $HOME/venv/Scripts/activate
-        python --version
-        pip install -r requirements.txt 
+    # - name: "Deploy pyhton 3.8.1 virtualenv" 
+    #   run: |
+    #     python --version 
+    #     choco install python --version 3.8.1
+    #     pip install virtualenv
+    #     virtualenv $HOME/venv
+    #     source $HOME/venv/Scripts/activate
+    #     python --version
+    #     pip install -r requirements.txt 
     - name: "Deploy terraform " 
       run: |
         choco install terraform
         terraform -help
         terraform -install-autocomplete                     
-    - name: "Teardown pyhton 3.8.1 virtualenv"
-      run: deactivate
+    # - name: "Teardown pyhton 3.8.1 virtualenv"
+    #   run: deactivate
 
   windows-latest-pwsh-chocogui:
     name: "windows-latest Microsoft Windows Server 2019 Datacenter pwsh"  
