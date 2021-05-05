@@ -61,3 +61,29 @@ jobs:
     #     # terraform -install-autocomplete                     
     # - name: "Teardown pyhton 3.8.1 virtualenv"
     #   run: deactivate
+
+  windows-latest-venv2-terraform:
+    name: "Microsoft Windows Server 2019 Datacenter terraform"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "Deploy pyhton 3.8.1 virtualenv" 
+      run: |
+        python --version 
+        choco install python --version 3.8.1
+        pip install virtualenv
+        virtualenv $HOME/venv
+        . $HOME/venv/Scripts/activate
+        python --version
+        pip install -r requirements.txt 
+        echo $HOME
+        deactivate
+        # D:\a\terraform-windows\terraform-windows\venv\Scripts\python.exe -m pip install --upgrade pip
+    # - name: "Deploy terraform " 
+    #   run: |
+    #     choco install terraform
+    #     terraform -help
+    #     # terraform -install-autocomplete                     
+    # - name: "Teardown pyhton 3.8.1 virtualenv"
+    #   run: deactivate    
