@@ -78,7 +78,10 @@ jobs:
         python --version
         pip install -r requirements.txt 
         echo $HOME
-        deactivate
+        choco install terraform
+        terraform -help
+        terraform -install-autocomplete
+        # deactivate
         # D:\a\terraform-windows\terraform-windows\venv\Scripts\python.exe -m pip install --upgrade pip
     # - name: "Deploy terraform " 
     #   run: |
