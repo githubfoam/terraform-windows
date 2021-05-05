@@ -80,7 +80,7 @@ jobs:
         echo $HOME
         choco install terraform
         terraform -help
-        terraform -install-autocomplete
+        #terraform -install-autocomplete #Error executing CLI: Did not find any shells to install
         # deactivate
         # D:\a\terraform-windows\terraform-windows\venv\Scripts\python.exe -m pip install --upgrade pip
     # - name: "Deploy terraform " 
