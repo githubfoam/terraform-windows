@@ -8,24 +8,86 @@ on:
 
 jobs:
 
+
   windows-latest-terraform:
-    name: "windows-latest Microsoft Windows Server 2019 Datacenter terraform"  
+    name: "Microsoft Windows Server 2019 Datacenter terraform"  
     runs-on: windows-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: "osfingerprinting"
+      run: systeminfo | more       
     - name: "Deploy terraform " 
       run: |
         choco install terraform
         terraform -help
+        # terraform -install-autocomplete                     
+ 
+
+  windows-latest-venv-terraform:
+    name: "Microsoft Windows Server 2019 Datacenter terraform"  
+    runs-on: windows-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "osfingerprinting"
+      run: systeminfo | more       
+    - name: "Deploy pyhton 3.8.1 virtualenv" 
+      run: |
+        python --version 
+        choco install python --version 3.8.1
+        pip install virtualenv
+        virtualenv $HOME/venv
+        . $HOME/venv/Scripts/activate
+        python --version
+        pip install -r requirements.txt 
+        echo $HOME
+        choco install terraform
+        terraform -help
+        #terraform -install-autocomplete #Error executing CLI: Did not find any shells to install
+        # deactivate  
 
   windows-2016-terraform:
-    name: "Microsoft Windows Server 2016 Datacenter terraform"
+    name: "Microsoft Windows Server 2016 Datacenter"
     runs-on: windows-2016
     steps:
     - name: Checkout
       uses: actions/checkout@v1
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more  
     - name: "Deploy terraform " 
       run: |
         choco install terraform
-        terraform -help         
+        terraform -help
+        # terraform -install-autocomplete    
+
+  windows-2016-venv-terraform:
+    name: "Microsoft Windows Server 2016 Datacenter"
+    runs-on: windows-2016
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: "check if server is virtual"
+      run: Systeminfo | findstr /i model   
+    - name: "check the PROCESSOR_ARCHITECTURE environment variable.64-bit systems will say AMD64 and 32-bit systems should say x86"
+      run: wmic OS get OSArchitecture     
+    - name: "osfingerprinting"
+      run: systeminfo | more  
+    - name: "Deploy pyhton 3.8.1 virtualenv" 
+      run: |
+        python --version 
+        choco install python --version 3.8.1
+        pip install virtualenv
+        virtualenv $HOME/venv
+        . $HOME/venv/Scripts/activate
+        python --version
+        pip install -r requirements.txt 
+        echo $HOME
+        choco install terraform
+        terraform -help
+        #terraform -install-autocomplete #Error executing CLI: Did not find any shells to install
+        # deactivate       
